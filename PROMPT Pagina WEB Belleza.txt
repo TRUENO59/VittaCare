@@ -1,0 +1,67 @@
+Eres un desarrollador web profesional especializado en e-commerce y diseño de catálogos de productos. Tu tarea es crear una página web completa que funcione como catálogo de productos de belleza para mujer.
+
+**Requisitos técnicos:**
+- Estructura HTML5 semántica y bien organizada
+- Diseño responsive que se adapte a dispositivos móviles, tablets y escritorio
+- CSS moderno con estilos limpios y profesionales
+- Funcionalidad interactiva con JavaScript vanilla (sin dependencias externas obligatorias, pero puedes usarlas si mejoran la experiencia)
+
+**Contenido y estructura del catálogo:**
+- Mínimo 8-12 productos de belleza para mujer (skincare, maquillaje, fragancias, o categorías similares)
+- Para cada producto incluye: nombre, imagen (usa URLs de imágenes reales o placeholders profesionales), precio de venta, descripción breve (2-3 líneas que expliquen beneficios o características)
+- Organiza los productos en una galería visual clara y atractiva
+
+**Experiencia de usuario:**
+- Navegación intuitiva y fácil de usar
+- Diseño visualmente atractivo que transmita profesionalismo y confianza (adecuado para productos de belleza)
+- Barra de navegación o encabezado con branding
+- Sección de footer con información básica
+- Opcionalmente: filtros o categorías para organizar productos, carrito de compras visual (sin backend requerido)
+
+**Entregable:**
+Proporciona el código completo (HTML, CSS, JavaScript) en un archivo único o estructura de carpetas clara. La página debe estar lista para abrir en un navegador web y funcionar completamente sin necesidad de servidor backend.
+
+
+
+***************************************************************************************************************************************************************************************************
+Eres un desarrollador web profesional especializado en e-commerce y sistemas de reseñas para catálogos de productos. Tu tarea es mejorar una página web de catálogo de belleza existente integrando un sistema interactivo y completo de reseñas y calificaciones.
+
+**Objetivo principal:**
+Enriquecer la página web existente con un sistema de reseñas y calificaciones que genere confianza del cliente mediante social proof verificable, manteniendo el diseño responsive y profesional original.
+
+**Sistema de reseñas y calificaciones a implementar:**
+
+Para cada producto de belleza (skincare, maquillaje, fragancias):
+
+1. **Interfaz visual:**
+   - Calificación por estrellas interactiva (escala 1-5)
+   - Contador visible del número total de reseñas
+   - Promedio de calificaciones mostrado prominentemente
+   - Sección expandible/contraíble de reseñas con lista de comentarios de usuarios
+
+2. **Estructura de datos de reseña:**
+   - Nombre del usuario
+   - Fecha de la reseña
+   - Calificación (1-5 estrellas)
+   - Comentario/texto de la reseña
+
+3. **Funcionalidad interactiva:**
+   - Formulario para añadir nuevas reseñas con validación completa (campos obligatorios, longitud mínima/máxima de comentarios, restricción de calificación 1-5)
+   - Ordenamiento de reseñas: opción para ver por más recientes o más útiles (útiles = ordenadas por relevancia)
+   - Visualización dinámica de estrellas basada en calificaciones
+   - Actualización en tiempo real de promedios y contadores
+
+**Requisitos técnicos:**
+- JavaScript vanilla para toda la interactividad (sin frameworks frontend requeridos)
+- localStorage del navegador para persistencia local de reseñas (las reseñas se mantienen después de recargar la página)
+- Diseño responsive que mantenga la coherencia visual con la página original
+- Código limpio, modular y mantenible
+- Validación robusta de formularios en cliente
+
+**Requisitos de diseño:**
+- La interfaz de reseñas debe integrarse naturalmente en el layout existente sin romper el diseño profesional
+- Mantén la coherencia visual con los estilos y paleta de colores original
+- Asegúrate de que la sección de reseñas sea accesible y fácil de usar en móvil, tablet y escritorio
+
+**Entregable:**
+Código mejorado listo para usar que integre el sistema de reseñas en la página existente. Debe funcionar completamente en navegador sin requerir backend. Las reseñas deben persistir localmente en cada dispositivo/navegador mediante localStorage.
