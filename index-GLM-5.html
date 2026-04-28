@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light" data-palette="rosa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VITA PIEL - Productos de belleza y skincare de alta calidad. Serums, cremas, tónicos y más. Envíos a todo Venezuela.">
+    <meta name="keywords" content="skincare, belleza, serum, crema, tónico, Venezuela, VITA PIEL">
+    <meta name="author" content="VITA PIEL">
+    <meta property="og:title" content="VITA PIEL | Skincare & Belleza">
+    <meta property="og:description" content="Descubre nuestra línea de skincare formulada para transformar tu rutina de belleza.">
+    <meta property="og:type" content="website">
+    <title>VITA PIEL | Skincare & Belleza</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Playfair Display', 'serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary: #F2B5C4;
+            --primary-hover: #E08A9E;
+            --primary-light: #FFF0F3;
+            --primary-rgb: 242,181,196;
+            --bg: #FFFAFB;
+            --bg-alt: #FFF5F7;
+            --card: #FFFFFF;
+            --text: #2D2D2D;
+            --text-secondary: #6B6B6B;
+            --text-muted: #999999;
+            --border: rgba(0,0,0,0.06);
+            --shadow-color: rgba(242,181,196,0.15);
+            --btn-text: #2D2D2D;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+        }
+
+        .font-display { font-family: 'Playfair Display', serif; }
+
+        .theme-transition,
+        .theme-transition *,
+        .theme-transition *::before,
+        .theme-transition *::after {
+            transition: background-color 0.5s ease, color 0.4s ease, border-color 0.5s ease, box-shadow 0.5s ease !important;
+        }
+
+        .bg-main { background-color: var(--bg); }
+        .bg-alt { background-color: var(--bg-alt); }
+        .bg-card { background-color: var(--card); }
+        .text-main { color: var(--text); }
+        .text-sec { color: var(--text-secondary); }
+        .text-muted-c { color: var(--text-muted); }
+        .border-theme { border-color: var(--border); }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--btn-text);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.35);
+        }
+        .btn-primary:active { transform: translateY(0); }
+
+        .btn-outline {
+            border: 1.5px solid var(--primary);
+            color: var(--text);
+            background: transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--btn-text);
+            transform: translateY(-2px);
+        }
+
+        .product-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(var(--primary-rgb), 0.15), 0 8px 16px rgba(0,0,0,0.04);
+        }
+        .product-card:hover .product-img { transform: scale(1.08); }
+        .product-img { transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+
+        .glass-header {
+            background: rgba(var(--primary-rgb), 0.08);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.5s ease;
+        }
+
+        .filter-tab {
+            color: var(--text-secondary);
+            border: 1.5px solid var(--border);
+            background: var(--card);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .filter-tab:hover { border-color: var(--primary); color: var(--text); }
+        .filter-tab.active {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: var(--btn-text);
+            font-weight: 600;
+        }
+
+        .palette-swatch {
+            width: 22px; height: 22px; border-radius: 50%;
+            cursor: pointer; transition: all 0.3s ease;
+            border: 2.5px solid transparent;
+            flex-shrink: 0;
+        }
+        .palette-swatch:hover { transform: scale(1.25); }
+        .palette-swatch.active {
+            border-color: var(--text);
+            box-shadow: 0 0 0 2.5px var(--card), 0 0 0 4.5px var(--text);
+        }
+
+        .theme-toggle {
+            cursor: pointer; padding: 8px; border-radius: 50%;
+            transition: all 0.3s ease; color: var(--text-secondary);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .theme-toggle:hover { color: var(--primary); background-color: var(--primary-light); }
+
+        .hero-blob {
+            position: absolute; border-radius: 50%;
+            filter: blur(90px); opacity: 0.35;
+            animation: blobFloat 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .hero-blob-2 { animation-delay: -3s; animation-duration: 11s; }
+        .hero-blob-3 { animation-delay: -6s; animation-duration: 14s; }
+
+        @keyframes blobFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -25px) scale(1.06); }
+            66% { transform: translate(-25px, 20px) scale(0.94); }
+        }
+
+        .fade-in {
+            opacity: 0; transform: translateY(35px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .fade-in-delay-1 { transition-delay: 0.1s; }
+        .fade-in-delay-2 { transition-delay: 0.2s; }
+        .fade-in-delay-3 { transition-delay: 0.3s; }
+
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .mobile-overlay {
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .mobile-overlay.open { opacity: 1; pointer-events: auto; }
+
+        .toast {
+            animation: toastIn 0.4s ease, toastOut 0.4s ease 2.6s forwards;
+        }
+        @keyframes toastIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes toastOut { to { opacity: 0; transform: translateY(-10px); } }
+
+        .whatsapp-float { animation: waPulse 2s ease-in-out infinite; }
+        @keyframes waPulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(37,211,102,0.3); }
+            50% { box-shadow: 0 4px 30px rgba(37,211,102,0.55); }
+        }
+
+        .form-input {
+            background-color: var(--bg-alt);
+            border: 1.5px solid var(--border);
+            color: var(--text);
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.15);
+        }
+        .form-input::placeholder { color: var(--text-muted); }
+
+        .contact-card {
+            background-color: var(--card);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .contact-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 28px rgba(var(--primary-rgb), 0.12);
+            transform: translateY(-4px);
+        }
+
+        .scroll-top {
+            opacity: 0; pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        .scroll-top.visible { opacity: 1; pointer-events: auto; }
+
+        .footer-link {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+        .footer-link:hover { color: var(--primary-hover); }
+
+        .section-eyebrow {
+            color: var(--primary-hover);
+            letter-spacing: 0.2em;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), rgba(var(--primary-rgb),0.3), var(--border), transparent);
+        }
+
+        .price-tag {
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-hover); }
+
+        @media (max-width: 768px) {
+            .hero-blob { filter: blur(60px); opacity: 0.25; }
+        }
+    </style>
+</head>
+
+<body class="font-body">
+
+    <!-- ===== HEADER ===== -->
+    <header id="header" class="glass-header fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#inicio" class="flex items-center gap-2 z-10">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: var(--primary);">
+                    <i data-lucide="sparkles" class="w-4 h-4" style="color: var(--btn-text);"></i>
+                </div>
+                <span class="font-display text-xl sm:text-2xl font-semibold tracking-tight" style="color: var(--text);">VITA PIEL</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#inicio" class="text-sm font-medium transition-colors duration-300 hover:opacity-70" style="color: var(--text);">Inicio</a>
+                <a href="#productos" class="text-sm font-medium transition-colors duration-300 hover:opacity-70" style="color: var(--text);">Productos</a>
+                <a href="#contacto" class="text-sm font-medium transition-colors duration-300 hover:opacity-70" style="color: var(--text);">Contacto</a>
+            </nav>
+
+            <!-- Controls -->
+            <div class="flex items-center gap-2 sm:gap-3 z-10">
+                <!-- Palette Swatches -->
+                <div class="hidden sm:flex items-center gap-1.5">
+                    <button class="palette-swatch active" data-palette="rosa" style="background:#F2B5C4;" title="Rosa Suave" aria-label="Paleta Rosa"></button>
+                    <button class="palette-swatch" data-palette="lavanda" style="background:#C8B6E2;" title="Lavanda" aria-label="Paleta Lavanda"></button>
+                    <button class="palette-swatch" data-palette="menta" style="background:#A8DFC4;" title="Menta Fresca" aria-label="Paleta Menta"></button>
+                    <button class="palette-swatch" data-palette="melocoton" style="background:#F5C5A8;" title="Melocotón" aria-label="Paleta Melocotón"></button>
+                </div>
+
+                <div class="w-px h-5 hidden sm:block" style="background: var(--border);"></div>
+
+                <!-- Theme Toggle -->
+                <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
+                    <i data-lucide="sun" class="w-5 h-5" id="themeIconSun" style="display:none;"></i>
+                    <i data-lucide="moon" class="w-5 h-5" id="themeIconMoon"></i>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="theme-toggle md:hidden" aria-label="Menú">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div id="mobileOverlay" class="mobile-overlay fixed inset-0 bg-black/40 z-50 md:hidden"></div>
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-72 h-full z-50 md:hidden flex flex-col" style="background-color: var(--card); border-left: 1px solid var(--border);">
+        <div class="flex items-center justify-between p-5" style="border-bottom: 1px solid var(--border);">
+            <span class="font-display text-lg font-semibold" style="color: var(--text);">Menú</span>
+            <button id="mobileMenuClose" class="theme-toggle" aria-label="Cerrar menú">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col p-5 gap-1">
+            <a href="#inicio" class="mobile-nav-link block py-3 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:pl-6" style="color: var(--text);" onclick="closeMobileMenu()">Inicio</a>
+            <a href="#productos" class="mobile-nav-link block py-3 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:pl-6" style="color: var(--text);" onclick="closeMobileMenu()">Productos</a>
+            <a href="#contacto" class="mobile-nav-link block py-3 px-4 rounded-lg text-sm font-medium transition-all duration-200 hover:pl-6" style="color: var(--text);" onclick="closeMobileMenu()">Contacto</a>
+        </nav>
+        <div class="mt-auto p-5" style="border-top: 1px solid var(--border);">
+            <p class="text-xs font-medium mb-3" style="color: var(--text-muted);">Paleta de colores</p>
+            <div class="flex items-center gap-2">
+                <button class="palette-swatch active" data-palette="rosa" style="background:#F2B5C4;" aria-label="Rosa"></button>
+                <button class="palette-swatch" data-palette="lavanda" style="background:#C8B6E2;" aria-label="Lavanda"></button>
+                <button class="palette-swatch" data-palette="menta" style="background:#A8DFC4;" aria-label="Menta"></button>
+                <button class="palette-swatch" data-palette="melocoton" style="background:#F5C5A8;" aria-label="Melocotón"></button>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- ===== HERO ===== -->
+        <section id="inicio" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
+            <!-- Blobs -->
+            <div class="hero-blob w-72 h-72 sm:w-96 sm:h-96 top-10 -left-20" style="background: var(--primary);"></div>
+            <div class="hero-blob hero-blob-2 w-60 h-60 sm:w-80 sm:h-80 bottom-10 right-[-5%]" style="background: var(--primary); opacity: 0.25;"></div>
+            <div class="hero-blob hero-blob-3 w-40 h-40 sm:w-56 sm:h-56 top-1/3 right-1/4" style="background: var(--primary-hover); opacity: 0.15;"></div>
+
+            <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+                <!-- Badge -->
+                <div class="fade-in inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8" style="background-color: rgba(var(--primary-rgb), 0.15); border: 1px solid rgba(var(--primary-rgb), 0.2);">
+                    <i data-lucide="truck" class="w-3.5 h-3.5" style="color: var(--primary-hover);"></i>
+                    <span class="text-xs font-semibold tracking-wide" style="color: var(--primary-hover);">Envíos a todo Venezuela</span>
+                </div>
+
+                <!-- Heading -->
+                <h1 class="fade-in font-display text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.05] mb-6" style="color: var(--text);">
+                    Tu piel merece<br>
+                    <span class="italic" style="color: var(--primary-hover);">lo mejor</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="fade-in fade-in-delay-1 text-base sm:text-lg leading-relaxed max-w-xl mx-auto mb-10" style="color: var(--text-secondary);">
+                    Descubre nuestra línea de skincare formulada con ingredientes de alta calidad para transformar tu rutina de belleza.
+                </p>
+
+                <!-- CTAs -->
+                <div class="fade-in fade-in-delay-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#productos" class="btn-primary px-8 py-3.5 rounded-full text-sm tracking-wide inline-flex items-center gap-2">
+                        Ver Productos
+                        <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                    </a>
+                    <a href="https://wa.me/584121234567?text=Hola%20VITA%20PIEL%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos" target="_blank" rel="noopener" class="btn-outline px-8 py-3.5 rounded-full text-sm tracking-wide inline-flex items-center gap-2">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Contáctanos
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="fade-in fade-in-delay-3 flex items-center justify-center gap-8 sm:gap-12 mt-16">
+                    <div class="text-center">
+                        <p class="font-display text-2xl sm:text-3xl font-bold" style="color: var(--text);">500+</p>
+                        <p class="text-xs mt-1" style="color: var(--text-muted);">Clientes felices</p>
+                    </div>
+                    <div class="w-px h-10" style="background: var(--border);"></div>
+                    <div class="text-center">
+                        <p class="font-display text-2xl sm:text-3xl font-bold" style="color: var(--text);">100%</p>
+                        <p class="text-xs mt-1" style="color: var(--text-muted);">Original</p>
+                    </div>
+                    <div class="w-px h-10" style="background: var(--border);"></div>
+                    <div class="text-center">
+                        <p class="font-display text-2xl sm:text-3xl font-bold" style="color: var(--text);">4.9★</p>
+                        <p class="text-xs mt-1" style="color: var(--text-muted);">Valoración</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
+                <span class="text-[10px] tracking-widest uppercase font-medium" style="color: var(--text-muted);">Scroll</span>
+                <div class="w-5 h-8 rounded-full border-2 flex justify-center pt-1.5" style="border-color: var(--text-muted);">
+                    <div class="w-1 h-2 rounded-full" style="background: var(--text-muted); animation: scrollDot 1.5s ease-in-out infinite;"></div>
+                </div>
+            </div>
+            <style>
+                @keyframes scrollDot { 0%, 100% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.3; transform: translateY(4px); } }
+            </style>
+        </section>
+
+        <!-- ===== PRODUCTS ===== -->
+        <section id="productos" class="py-20 sm:py-28" style="background-color: var(--bg-alt);">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-12 sm:mb-16">
+                    <p class="fade-in section-eyebrow mb-3">Nuestros Productos</p>
+                    <h2 class="fade-in font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style="color: var(--text);">Descubre nuestra colección</h2>
+                    <p class="fade-in text-sm sm:text-base max-w-lg mx-auto" style="color: var(--text-secondary);">Formulados con los mejores ingredientes para cuidar tu piel cada día.</p>
+                </div>
+
+                <!-- Filters -->
+                <div class="fade-in flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-14">
+                    <button class="filter-tab active px-5 py-2 rounded-full text-xs sm:text-sm" data-filter="todos">Todos</button>
+                    <button class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm" data-filter="serums">Serums</button>
+                    <button class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm" data-filter="cremas">Cremas</button>
+                    <button class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm" data-filter="tonicos">Tónicos</button>
+                    <button class="filter-tab px-5 py-2 rounded-full text-xs sm:text-sm" data-filter="otros">Otros</button>
+                </div>
+
+                <!-- Product Grid -->
+                <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+                    <!-- Products injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- ===== CONTACT ===== -->
+        <section id="contacto" class="py-20 sm:py-28">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-12 sm:mb-16">
+                    <p class="fade-in section-eyebrow mb-3">Contáctanos</p>
+                    <h2 class="fade-in font-display text-3xl sm:text-4xl md:text-5xl font-bold mb-4" style="color: var(--text);">¿Tienes alguna pregunta?</h2>
+                    <p class="fade-in text-sm sm:text-base max-w-lg mx-auto" style="color: var(--text-secondary);">Estamos aquí para ayudarte. Escríbenos y responde lo antes posible.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+                    <!-- Contact Cards -->
+                    <div class="lg:col-span-2 flex flex-col gap-4">
+                        <a href="https://wa.me/584121234567?text=Hola%20VITA%20PIEL%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos" target="_blank" rel="noopener" class="fade-in contact-card rounded-2xl p-6 flex items-start gap-4 no-underline">
+                            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(37,211,102,0.12);">
+                                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm mb-1" style="color: var(--text);">WhatsApp</h3>
+                                <p class="text-xs" style="color: var(--text-secondary);">+58 412-1234567</p>
+                                <p class="text-[11px] mt-1" style="color: var(--text-muted);">Respuesta inmediata</p>
+                            </div>
+                        </a>
+
+                        <a href="mailto:contacto@vitapiel.com" class="fade-in contact-card rounded-2xl p-6 flex items-start gap-4 no-underline">
+                            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(var(--primary-rgb), 0.15);">
+                                <i data-lucide="mail" class="w-5 h-5" style="color: var(--primary-hover);"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm mb-1" style="color: var(--text);">Email</h3>
+                                <p class="text-xs" style="color: var(--text-secondary);">contacto@vitapiel.com</p>
+                                <p class="text-[11px] mt-1" style="color: var(--text-muted);">Respuesta en 24h</p>
+                            </div>
+                        </a>
+
+                        <div class="fade-in contact-card rounded-2xl p-6 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(var(--primary-rgb), 0.15);">
+                                <i data-lucide="map-pin" class="w-5 h-5" style="color: var(--primary-hover);"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm mb-1" style="color: var(--text);">Ubicación</h3>
+                                <p class="text-xs" style="color: var(--text-secondary);">Caracas, Venezuela</p>
+                                <p class="text-[11px] mt-1" style="color: var(--text-muted);">Entrega local y delivery</p>
+                            </div>
+                        </div>
+
+                        <div class="fade-in contact-card rounded-2xl p-6 flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background-color: rgba(var(--primary-rgb), 0.15);">
+                                <i data-lucide="clock" class="w-5 h-5" style="color: var(--primary-hover);"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-sm mb-1" style="color: var(--text);">Horario</h3>
+                                <p class="text-xs" style="color: var(--text-secondary);">Lun - Sáb: 9:00 AM - 6:00 PM</p>
+                                <p class="text-[11px] mt-1" style="color: var(--text-muted);">Domingos: solo WhatsApp</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-3">
+                        <form id="contactForm" class="fade-in rounded-2xl p-6 sm:p-8" style="background-color: var(--card); border: 1px solid var(--border);">
+                            <h3 class="font-display text-xl font-semibold mb-6" style="color: var(--text);">Envíanos un mensaje</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label class="block text-xs font-medium mb-2" style="color: var(--text-secondary);">Nombre *</label>
+                                    <input type="text" name="nombre" required class="form-input w-full px-4 py-3 rounded-xl text-sm" placeholder="Tu nombre">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-medium mb-2" style="color: var(--text-secondary);">Email *</label>
+                                    <input type="email" name="email" required class="form-input w-full px-4 py-3 rounded-xl text-sm" placeholder="tu@email.com">
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="block text-xs font-medium mb-2" style="color: var(--text-secondary);">Asunto</label>
+                                <select name="asunto" class="form-input w-full px-4 py-3 rounded-xl text-sm appearance-none cursor-pointer">
+                                    <option value="">Selecciona un asunto</option>
+                                    <option value="producto">Consulta sobre producto</option>
+                                    <option value="pedido">Estado de pedido</option>
+                                    <option value="pago">Métodos de pago</option>
+                                    <option value="envio">Información de envío</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-xs font-medium mb-2" style="color: var(--text-secondary);">Mensaje *</label>
+                                <textarea name="mensaje" required rows="5" class="form-input w-full px-4 py-3 rounded-xl text-sm resize-none" placeholder="Escribe tu mensaje aquí..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary w-full py-3.5 rounded-xl text-sm tracking-wide inline-flex items-center justify-center gap-2">
+                                <i data-lucide="send" class="w-4 h-4"></i>
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer style="background-color: var(--bg-alt); border-top: 1px solid var(--border);">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+                <!-- Brand -->
+                <div class="sm:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: var(--primary);">
+                            <i data-lucide="sparkles" class="w-4 h-4" style="color: var(--btn-text);"></i>
+                        </div>
+                        <span class="font-display text-xl font-semibold" style="color: var(--text);">VITA PIEL</span>
+                    </div>
+                    <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">Skincare de alta calidad para el cuidado diario de tu piel. Productos 100% originales.</p>
+                    <div class="flex items-center gap-3">
+                        <a href="#" class="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background-color: rgba(var(--primary-rgb), 0.15); color: var(--primary-hover);" aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background-color: rgba(var(--primary-rgb), 0.15); color: var(--primary-hover);" aria-label="TikTok">
+                            <i data-lucide="music-2" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div>
+                    <h4 class="font-semibold text-sm mb-4" style="color: var(--text);">Métodos de Pago</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--card); border: 1px solid var(--border);">
+                                <i data-lucide="smartphone" class="w-3.5 h-3.5" style="color: var(--text-secondary);"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-medium" style="color: var(--text);">Pago Móvil</p>
+                                <p class="text-[10px]" style="color: var(--text-muted);">Transferencia instantánea</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--card); border: 1px solid var(--border);">
+                                <i data-lucide="landmark" class="w-3.5 h-3.5" style="color: var(--text-secondary);"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-medium" style="color: var(--text);">Transferencia</p>
+                                <p class="text-[10px]" style="color: var(--text-muted);">Bancaria Venezuela</p>
+                            </div>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-lg flex items-center justify-center" style="background-color: var(--card); border: 1px solid var(--border);">
+                                <i data-lucide="dollar-sign" class="w-3.5 h-3.5" style="color: var(--text-secondary);"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-medium" style="color: var(--text);">Zelle</p>
+                                <p class="text-[10px]" style="color: var(--text-muted);">Pago desde USA</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Shipping -->
+                <div>
+                    <h4 class="font-semibold text-sm mb-4" style="color: var(--text);">Envíos</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="package" class="w-4 h-4 mt-0.5 flex-shrink-0" style="color: var(--primary-hover);"></i>
+                            <div>
+                                <p class="text-xs font-medium" style="color: var(--text);">Delivery Nacional</p>
+                                <p class="text-[10px]" style="color: var(--text-muted);">MRW, Zoom, TEALCA</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="store" class="w-4 h-4 mt-0.5 flex-shrink-0" style="color: var(--primary-hover);"></i>
+                            <div>
+                                <p class="text-xs font-medium" style="color: var(--text);">Entrega Local</p>
+                                <p class="text-[10px]" style="color: var(--text-muted);">Caracas - Acordar punto</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="shield-check" class="w-4 h-4 mt-0.5 flex-shrink-0" style="color: var(--primary-hover);"></i>
+                            <div>
+                                <p class="text-xs font-medium" style="color: var(--text);">Empaque Seguro</p>
+                                <p class="text-[10px]" style="color: var(--text-muted);">Protección en cada envío</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold text-sm mb-4" style="color: var(--text);">Enlaces</h4>
+                    <ul class="space-y-2.5">
+                        <li><a href="#inicio" class="footer-link text-xs">Inicio</a></li>
+                        <li><a href="#productos" class="footer-link text-xs">Productos</a></li>
+                        <li><a href="#contacto" class="footer-link text-xs">Contacto</a></li>
+                        <li><a href="https://wa.me/584121234567" target="_blank" class="footer-link text-xs inline-flex items-center gap-1.5">
+                            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            WhatsApp Directo
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="divider mb-6"></div>
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p class="text-[11px]" style="color: var(--text-muted);">© 2025 VITA PIEL. Todos los derechos reservados.</p>
+                <p class="text-[11px]" style="color: var(--text-muted);">Precios en USD · Pagos en Venezuela</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== FLOATING WHATSAPP ===== -->
+    <a href="https://wa.me/584121234567?text=Hola%20VITA%20PIEL%2C%20quiero%20informaci%C3%B3n%20sobre%20sus%20productos" target="_blank" rel="noopener" class="whatsapp-float fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center text-white shadow-lg hover:scale-110 transition-transform duration-300" aria-label="WhatsApp">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ===== SCROLL TO TOP ===== -->
+    <button id="scrollTop" class="scroll-top fixed bottom-6 left-6 z-40 w-11 h-11 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300" style="background-color: var(--primary); color: var(--btn-text);" aria-label="Volver arriba">
+        <i data-lucide="chevron-up" class="w-5 h-5"></i>
+    </button>
+
+    <!-- ===== TOAST CONTAINER ===== -->
+    <div id="toastContainer" class="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 flex flex-col items-center gap-2 pointer-events-none"></div>
+
+
+    <script>
+    // ==========================================
+    // CONFIGURACIÓN Y DATOS
+    // ==========================================
+
+    // ⚠️ CAMBIA ESTE NÚMERO POR TU WHATSAPP REAL
+    const WHATSAPP_NUMBER = '584121234567';
+
+    const palettes = {
+        rosa: {
+            name: 'Rosa Suave',
+            swatch: '#F2B5C4',
+            light: {
+                '--primary': '#F2B5C4', '--primary-hover': '#D4738A', '--primary-light': '#FFF0F3',
+                '--primary-rgb': '242,181,196', '--bg': '#FFFAFB', '--bg-alt': '#FFF5F7',
+                '--card': '#FFFFFF', '--text': '#2D2D2D', '--text-secondary': '#6B6B6B',
+                '--text-muted': '#999999', '--border': 'rgba(0,0,0,0.06)', '--shadow-color': 'rgba(242,181,196,0.15)',
+                '--btn-text': '#2D2D2D'
+            },
+            dark: {
+                '--primary': '#F2B5C4', '--primary-hover': '#FFD1DC', '--primary-light': 'rgba(242,181,196,0.12)',
+                '--primary-rgb': '242,181,196', '--bg': '#14141F', '--bg-alt': '#1C1C2E',
+                '--card': '#222236', '--text': '#F0EFF4', '--text-secondary': '#A8A8BE',
+                '--text-muted': '#6E6E84', '--border': 'rgba(255,255,255,0.06)', '--shadow-color': 'rgba(0,0,0,0.3)',
+                '--btn-text': '#1A1A2A'
+            }
+        },
+        lavanda: {
+            name: 'Lavanda',
+            swatch: '#C8B6E2',
+            light: {
+                '--primary': '#C8B6E2', '--primary-hover': '#9B7FCC', '--primary-light': '#F3EFF9',
+                '--primary-rgb': '200,182,226', '--bg': '#FDFCFF', '--bg-alt': '#F5F0FF',
+                '--card': '#FFFFFF', '--text': '#2D2D2D', '--text-secondary': '#6B6B6B',
+                '--text-muted': '#999999', '--border': 'rgba(0,0,0,0.06)', '--shadow-color': 'rgba(200,182,226,0.15)',
+                '--btn-text': '#2D2D2D'
+            },
+            dark: {
+                '--primary': '#C8B6E2', '--primary-hover': '#DDD0F0', '--primary-light': 'rgba(200,182,226,0.12)',
+                '--primary-rgb': '200,182,226', '--bg': '#14141F', '--bg-alt': '#1C1C2E',
+                '--card': '#222236', '--text': '#F0EFF4', '--text-secondary': '#A8A8BE',
+                '--text-muted': '#6E6E84', '--border': 'rgba(255,255,255,0.06)', '--shadow-color': 'rgba(0,0,0,0.3)',
+                '--btn-text': '#1A1A2A'
+            }
+        },
+        menta: {
+            name: 'Menta Fresca',
+            swatch: '#A8DFC4',
+            light: {
+                '--primary': '#A8DFC4', '--primary-hover': '#5BAF8A', '--primary-light': '#EDFAF4',
+                '--primary-rgb': '168,223,196', '--bg': '#FCFFFE', '--bg-alt': '#F0FAF5',
+                '--card': '#FFFFFF', '--text': '#2D2D2D', '--text-secondary': '#6B6B6B',
+                '--text-muted': '#999999', '--border': 'rgba(0,0,0,0.06)', '--shadow-color': 'rgba(168,223,196,0.15)',
+                '--btn-text': '#2D2D2D'
+            },
+            dark: {
+                '--primary': '#A8DFC4', '--primary-hover': '#C4EEDD', '--primary-light': 'rgba(168,223,196,0.12)',
+                '--primary-rgb': '168,223,196', '--bg': '#14141F', '--bg-alt': '#1C1C2E',
+                '--card': '#222236', '--text': '#F0EFF4', '--text-secondary': '#A8A8BE',
+                '--text-muted': '#6E6E84', '--border': 'rgba(255,255,255,0.06)', '--shadow-color': 'rgba(0,0,0,0.3)',
+                '--btn-text': '#1A1A2A'
+            }
+        },
+        melocoton: {
+            name: 'Melocotón',
+            swatch: '#F5C5A8',
+            light: {
+                '--primary': '#F5C5A8', '--primary-hover': '#D4905F', '--primary-light': '#FFF5EE',
+                '--primary-rgb': '245,197,168', '--bg': '#FFFCFA', '--bg-alt': '#FFFAF5',
+                '--card': '#FFFFFF', '--text': '#2D2D2D', '--text-secondary': '#6B6B6B',
+                '--text-muted': '#999999', '--border': 'rgba(0,0,0,0.06)', '--shadow-color': 'rgba(245,197,168,0.15)',
+                '--btn-text': '#2D2D2D'
+            },
+            dark: {
+                '--primary': '#F5C5A8', '--primary-hover': '#FFD9C4', '--primary-light': 'rgba(245,197,168,0.12)',
+                '--primary-rgb': '245,197,168', '--bg': '#14141F', '--bg-alt': '#1C1C2E',
+                '--card': '#222236', '--text': '#F0EFF4', '--text-secondary': '#A8A8BE',
+                '--text-muted': '#6E6E84', '--border': 'rgba(255,255,255,0.06)', '--shadow-color': 'rgba(0,0,0,0.3)',
+                '--btn-text': '#1A1A2A'
+            }
+        }
+    };
+
+    const products = [
+        {
+            id: 1, name: 'Serum Vitamina C', category: 'serums',
+            //description: 'Ilumina y uniformiza el tono con vitamina C estabilizada al 15% y ácido ferúlico.',
+            description: "Regula la producción de grasa, reduce la apariencia de poros y combate imperfecciones.",
+            //price: 28.00, badge: 'Bestseller',
+            price: 13, badge: 'Bestseller',
+            //image: 'https://picsum.photos/seed/vitac-serum/400/400'
+            image:"TheOrdinaryNiacinamida.png?w=600&h=800&fit=crop"
+        },
+        {
+            id: 2, name: 'Serum Ácido Hialurónico', category: 'serums',
+            description: 'Hidratación profunda con triple peso molecular. Rellena líneas finas al instante.',
+            price: 32.00, badge: null,
+            image: 'https://picsum.photos/seed/hyaluronic-ser/400/400'
+        },
+        {
+            id: 3, name: 'Serum Niacinamida 10%', category: 'serums',
+            description: 'Reduce poros, controla sebo y mejora la textura. Ideal para piel mixta y grasa.',
+            price: 26.00, badge: 'Nuevo',
+            image: 'https://picsum.photos/seed/niacinamide-s/400/400'
+        },
+        {
+            id: 4, name: 'Tónico Facial Hidratante', category: 'tonicos',
+            description: 'Equilibra el pH y prepá la piel. Con extracto de rosas y aloe vera.',
+            price: 18.00, badge: null,
+            image: 'https://picsum.photos/seed/toner-rose/400/400'
+        },
+        {
+            id: 5, name: 'Tónico Exfoliante BHA', category: 'tonicos',
+            description: 'Exfoliación suave con ácido salicílico al 2%. Limpia poros en profundidad.',
+            price: 22.00, badge: null,
+            image: 'https://picsum.photos/seed/bha-toner/400/400'
+        },
+        {
+            id: 6, name: 'Crema Hidratante Ligera', category: 'cremas',
+            description: 'Hidratación 48h con textura ultraligera. Ceramidas y ácido hialurónico.',
+            price: 24.00, badge: 'Popular',
+            image: 'https://picsum.photos/seed/light-cream/400/400'
+        },
+        {
+            id: 7, name: 'Protector Solar SPF 50', category: 'cremas',
+            description: 'Protección broad spectrum con toque seco. Sin residuo blanco, ideal para uso diario.',
+            price: 25.00, badge: null,
+            image: 'https://picsum.photos/seed/spf-sunscreen/400/400'
+        },
+        {
+            id: 8, name: 'Contorno de Ojos', category: 'otros',
+            description: 'Reduce ojeras y bolsas con cafeína, péptidos y retinol suave.',
+            price: 26.00, badge: null,
+            image: 'https://picsum.photos/seed/eye-contour/400/400'
+        },
+        {
+            id: 9, name: 'Mascarilla Purificante', category: 'otros',
+            description: 'Arcilla blanca y té verde. Limpieza profunda para poros dilatados.',
+            price: 22.00, badge: null,
+            image: 'https://picsum.photos/seed/clay-mask/400/400'
+        },
+        {
+            id: 10, name: 'Exfoliante Enzimático', category: 'otros',
+            description: 'Renueva la piel con enzimas de papaya y microesferas de jojoba.',
+            price: 20.00, badge: null,
+            image: 'https://picsum.photos/seed/enzyme-exfol/400/400'
+        },
+        {
+            id: 11, name: 'Crema de Noche Retinol', category: 'cremas',
+            description: 'Regeneración nocturna con retinol encapsulado. Reduce arrugas mientras duermes.',
+            price: 34.00, badge: 'Premium',
+            image: 'https://picsum.photos/seed/retinol-night/400/400'
+        },
+        {
+            id: 12, name: 'Bálsamo Labial Hidratante', category: 'otros',
+            description: 'Mantequilla de karité y aceite de coco. Repara labios secos y agrietados.',
+            price: 12.00, badge: null,
+            image: 'https://picsum.photos/seed/lip-balm-vp/400/400'
+        }
+    ];
+
+
+    // ==========================================
+    // ESTADO
+    // ==========================================
+    let currentTheme = localStorage.getItem('vp-theme') || 'light';
+    let currentPalette = localStorage.getItem('vp-palette') || 'rosa';
+    let currentFilter = 'todos';
+
+
+    // ==========================================
+    // FUNCIONES DE TEMA Y PALETA
+    // ==========================================
+    function applyTheme(palette, theme, animate = true) {
+        const vars = palettes[palette][theme];
+        const root = document.documentElement;
+
+        if (animate) root.classList.add('theme-transition');
+
+        Object.entries(vars).forEach(([key, value]) => {
+            root.style.setProperty(key, value);
+        });
+
+        root.setAttribute('data-theme', theme);
+        root.setAttribute('data-palette', palette);
+
+        // Update theme icon
+        document.getElementById('themeIconSun').style.display = theme === 'dark' ? 'block' : 'none';
+        document.getElementById('themeIconMoon').style.display = theme === 'dark' ? 'none' : 'block';
+
+        // Update active swatch
+        document.querySelectorAll('.palette-swatch').forEach(s => {
+            s.classList.toggle('active', s.dataset.palette === palette);
+        });
+
+        // Update header glass
+        const header = document.getElementById('header');
+        if (theme === 'dark') {
+            header.style.background = 'rgba(20,20,31,0.85)';
+        } else {
+            header.style.background = `rgba(${vars['--primary-rgb']}, 0.08)`;
+        }
+
+        if (animate) {
+            setTimeout(() => root.classList.remove('theme-transition'), 600);
+        }
+    }
+
+    function toggleTheme() {
+        currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+        localStorage.setItem('vp-theme', currentTheme);
+        applyTheme(currentPalette, currentTheme);
+    }
+
+    function switchPalette(palette) {
+        currentPalette = palette;
+        localStorage.setItem('vp-palette', palette);
+        applyTheme(currentPalette, currentTheme);
+    }
+
+
+    // ==========================================
+    // RENDERIZADO DE PRODUCTOS
+    // ==========================================
+    function renderProducts(filter = 'todos') {
+        const grid = document.getElementById('productGrid');
+        const filtered = filter === 'todos' ? products : products.filter(p => p.category === filter);
+
+        grid.innerHTML = filtered.map((product, i) => {
+            const badgeHTML = product.badge
+                ? `<span class="absolute top-3 left-3 z-10 px-3 py-1 rounded-full text-[10px] font-bold tracking-wide uppercase" style="background-color: var(--primary); color: var(--btn-text);">${product.badge}</span>`
+                : '';
+
+            const waMessage = encodeURIComponent(`Hola VITA PIEL, me interesa el producto *${product.name}* ($${product.price.toFixed(2)} USD). ¿Podrían darme más información sobre disponibilidad y métodos de pago?`);
+            const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${waMessage}`;
+
+            return `
+                <div class="product-card rounded-2xl overflow-hidden fade-in" style="transition-delay: ${i * 0.06}s;">
+                    <div class="relative aspect-square overflow-hidden" style="background-color: var(--bg-alt);">
+                        ${badgeHTML}
+                        <img src="${product.image}" alt="${product.name}" class="product-img w-full h-full object-cover" loading="lazy">
+                    </div>
+                    <div class="p-5">
+                        <p class="text-[10px] font-semibold tracking-widest uppercase mb-1.5" style="color: var(--primary-hover);">${product.category}</p>
+                        <h3 class="font-semibold text-sm mb-2 leading-snug" style="color: var(--text);">${product.name}</h3>
+                        <p class="text-xs leading-relaxed mb-4" style="color: var(--text-secondary);">${product.description}</p>
+                        <div class="flex items-center justify-between gap-3">
+                            <span class="price-tag text-lg">$${product.price.toFixed(2)}</span>
+                            <a href="${waLink}" target="_blank" rel="noopener" class="btn-primary px-4 py-2 rounded-full text-[11px] tracking-wide inline-flex items-center gap-1.5 flex-shrink-0">
+                                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                                Comprar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // Trigger fade-in
+        requestAnimationFrame(() => {
+            grid.querySelectorAll('.fade-in').forEach((el, i) => {
+                setTimeout(() => el.classList.add('visible'), i * 60);
+            });
+        });
+    }
+
+
+    // ==========================================
+    // FILTROS
+    // ==========================================
+    function setupFilters() {
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                currentFilter = tab.dataset.filter;
+                renderProducts(currentFilter);
+            });
+        });
+    }
+
+
+    // ==========================================
+    // MENÚ MÓVIL
+    // ==========================================
+    function openMobileMenu() {
+        document.getElementById('mobileMenu').classList.add('open');
+        document.getElementById('mobileOverlay').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+        document.getElementById('mobileMenu').classList.remove('open');
+        document.getElementById('mobileOverlay').classList.remove('open');
+        document.body.style.overflow = '';
+    }
+
+
+    // ==========================================
+    // TOAST NOTIFICATIONS
+    // ==========================================
+    function showToast(message, type = 'success') {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        const bgColor = type === 'success' ? 'var(--primary)' : '#ef4444';
+        const textColor = type === 'success' ? 'var(--btn-text)' : '#fff';
+        const icon = type === 'success' ? '✓' : '✕';
+
+        toast.className = 'toast pointer-events-auto';
+        toast.innerHTML = `
+            <div class="flex items-center gap-3 px-5 py-3 rounded-xl shadow-lg" style="background-color: ${bgColor}; color: ${textColor};">
+                <span class="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center text-xs font-bold">${icon}</span>
+                <span class="text-sm font-medium">${message}</span>
+            </div>
+        `;
+        container.appendChild(toast);
+        setTimeout(() => toast.remove(), 3200);
+    }
+
+
+    // ==========================================
+    // FORMULARIO DE CONTACTO
+    // ==========================================
+    function setupContactForm() {
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const nombre = form.nombre.value.trim();
+            const email = form.email.value.trim();
+            const mensaje = form.mensaje.value.trim();
+
+            if (!nombre || !email || !mensaje) {
+                showToast('Por favor completa todos los campos obligatorios', 'error');
+                return;
+            }
+
+            // Simulate sending
+            const btn = form.querySelector('button[type="submit"]');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<span class="inline-flex items-center gap-2"><svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4m-7.07-3.93l2.83-2.83m8.48-8.48l2.83-2.83M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83"/></svg> Enviando...</span>';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                showToast('¡Mensaje enviado correctamente! Te responderemos pronto.');
+                form.reset();
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }, 1200);
+        });
+    }
+
+
+    // ==========================================
+    // SCROLL EFFECTS
+    // ==========================================
+    function setupScrollEffects() {
+        // Fade-in observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Scroll to top button
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 500);
+        }, { passive: true });
+
+        scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+
+    // ==========================================
+    // INICIALIZACIÓN
+    // ==========================================
+    document.addEventListener('DOMContentLoaded', () => {
+        // Apply saved preferences
+        applyTheme(currentPalette, currentTheme, false);
+
+        // Render products
+        renderProducts('todos');
+        setupFilters();
+
+        // Setup contact form
+        setupContactForm();
+
+        // Theme toggle
+        document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+
+        // Palette swatches (both desktop and mobile)
+        document.querySelectorAll('.palette-swatch').forEach(swatch => {
+            swatch.addEventListener('click', () => switchPalette(swatch.dataset.palette));
+        });
+
+        // Mobile menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', openMobileMenu);
+        document.getElementById('mobileMenuClose').addEventListener('click', closeMobileMenu);
+        document.getElementById('mobileOverlay').addEventListener('click', closeMobileMenu);
+
+        // Scroll effects
+        setupScrollEffects();
+
+        // Init Lucide icons
+        lucide.createIcons();
+
+        // Re-observe dynamically added elements after a tick
+        setTimeout(() => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in:not(.visible)').forEach(el => observer.observe(el));
+        }, 100);
+    });
+    </script>
+</body>
+</html>
