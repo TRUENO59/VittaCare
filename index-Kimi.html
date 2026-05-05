@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITA PIEL - Skincare & Belleza</title>
+    <meta name="description" content="VITA PIEL - Tienda de productos de skincare y belleza. Serums, cremas, tónicos y más. Envíos locales y delivery.">
+    <meta name="keywords" content="skincare, belleza, serum, crema, tónico, VITA PIEL, cuidado de la piel">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #f4a6b8;
+            --primary-light: #fbdde5;
+            --primary-dark: #e07a95;
+            --secondary: #a8d8ea;
+            --accent: #ffd3b6;
+            --bg: #fdf8f5;
+            --bg-alt: #fff5f7;
+            --surface: #ffffff;
+            --surface-hover: #faf0f3;
+            --text: #3d2c2e;
+            --text-light: #7a5e62;
+            --text-muted: #b8a0a4;
+            --border: #f0e0e3;
+            --shadow: rgba(61, 44, 46, 0.08);
+            --shadow-hover: rgba(61, 44, 46, 0.15);
+            --success: #a8e6cf;
+            --warning: #ffd3b6;
+            --error: #ffaaa5;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --font-body: 'Poppins', sans-serif;
+            --font-display: 'Playfair Display', serif;
+        }
+
+        [data-theme="dark"] {
+            --bg: #1a1416;
+            --bg-alt: #231c1e;
+            --surface: #2d2426;
+            --surface-hover: #3a2e31;
+            --text: #f0e0e3;
+            --text-light: #c4a8ac;
+            --text-muted: #8a6e72;
+            --border: #3d2c2e;
+            --shadow: rgba(0, 0, 0, 0.3);
+            --shadow-hover: rgba(0, 0, 0, 0.5);
+        }
+
+        [data-palette="lavender"] {
+            --primary: #b8a9c9;
+            --primary-light: #e4ddf0;
+            --primary-dark: #9b8ab0;
+            --secondary: #a8d8ea;
+            --accent: #ffd3b6;
+            --bg: #f8f5fd;
+            --bg-alt: #f3f0fa;
+            --surface: #ffffff;
+            --surface-hover: #f5f2fa;
+            --text: #2d2a3e;
+            --text-light: #6b6680;
+            --text-muted: #a8a2b8;
+            --border: #e0d8ec;
+        }
+
+        [data-theme="dark"][data-palette="lavender"] {
+            --bg: #16141a;
+            --bg-alt: #1e1c26;
+            --surface: #282530;
+            --surface-hover: #332f3d;
+            --text: #e0d8ec;
+            --text-light: #a8a2b8;
+            --text-muted: #6b6680;
+            --border: #3d3850;
+        }
+
+        [data-palette="mint"] {
+            --primary: #88d8b0;
+            --primary-light: #c8f0db;
+            --primary-dark: #5cb88a;
+            --secondary: #a8d8ea;
+            --accent: #ffd3b6;
+            --bg: #f5fdf8;
+            --bg-alt: #eefaf3;
+            --surface: #ffffff;
+            --surface-hover: #f0faf4;
+            --text: #2a3d33;
+            --text-light: #5a7a6a;
+            --text-muted: #8fb0a0;
+            --border: #d8ece0;
+        }
+
+        [data-theme="dark"][data-palette="mint"] {
+            --bg: #121a16;
+            --bg-alt: #1a241e;
+            --surface: #222e28;
+            --surface-hover: #2c3a32;
+            --text: #d8ece0;
+            --text-light: #8fb0a0;
+            --text-muted: #5a7a6a;
+            --border: #2a3d33;
+        }
+
+        [data-palette="peach"] {
+            --primary: #f4b393;
+            --primary-light: #fbe0d3;
+            --primary-dark: #e08f6a;
+            --secondary: #a8d8ea;
+            --accent: #ffd3b6;
+            --bg: #fdf8f5;
+            --bg-alt: #faf2ed;
+            --surface: #ffffff;
+            --surface-hover: #faf5f0;
+            --text: #3d2c24;
+            --text-light: #7a5e50;
+            --text-muted: #b8a090;
+            --border: #f0e0d8;
+        }
+
+        [data-theme="dark"][data-palette="peach"] {
+            --bg: #1a1412;
+            --bg-alt: #231c18;
+            --surface: #2d2420;
+            --surface-hover: #3a2e28;
+            --text: #f0e0d8;
+            --text-light: #b8a090;
+            --text-muted: #7a5e50;
+            --border: #3d2c24;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        img { max-width: 100%; display: block; }
+        button { border: none; background: none; cursor: pointer; font-family: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 14px 32px; border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+            cursor: pointer; transition: var(--transition); border: 2px solid transparent;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; box-shadow: 0 4px 15px var(--shadow-hover);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--shadow-hover); }
+        .btn-outline { background: transparent; color: var(--primary-dark); border: 2px solid var(--primary); }
+        .btn-outline:hover { background: var(--primary); color: white; }
+
+        .section-title {
+            font-family: var(--font-display); font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600; text-align: center; margin-bottom: 12px; color: var(--text);
+        }
+        .section-subtitle { text-align: center; color: var(--text-light); font-size: 1.1rem; margin-bottom: 48px; }
+
+        /* Header */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        [data-theme="dark"] .header { background: rgba(45, 36, 38, 0.85); }
+        .header.scrolled { box-shadow: 0 4px 20px var(--shadow); }
+        .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+        .logo { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--primary-dark); letter-spacing: 2px; }
+        .logo span { color: var(--primary); }
+        .nav-desktop { display: flex; gap: 32px; }
+        .nav-desktop a { font-weight: 500; font-size: 0.95rem; color: var(--text-light); position: relative; }
+        .nav-desktop a::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--primary); transition: var(--transition); border-radius: 2px; }
+        .nav-desktop a:hover { color: var(--primary-dark); }
+        .nav-desktop a:hover::after { width: 100%; }
+        .header-controls { display: flex; align-items: center; gap: 12px; }
+        .control-btn {
+            width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            background: var(--bg-alt); color: var(--text); border: 1px solid var(--border); font-size: 1.1rem; cursor: pointer;
+            transition: var(--transition);
+        }
+        .control-btn:hover { background: var(--primary-light); color: var(--primary-dark); transform: scale(1.1); }
+        .cart-btn { position: relative; }
+        .cart-count {
+            position: absolute; top: -4px; right: -4px; background: var(--primary-dark); color: white;
+            font-size: 0.7rem; font-weight: 700; width: 20px; height: 20px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+        .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--text); transition: var(--transition); border-radius: 2px; }
+        .mobile-menu-btn.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+        .mobile-menu-btn.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .mobile-nav {
+            display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--surface);
+            border-bottom: 1px solid var(--border); padding: 20px 24px;
+            transform: translateY(-100%); opacity: 0; transition: var(--transition); z-index: 999;
+        }
+        .mobile-nav.active { transform: translateY(0); opacity: 1; }
+        .mobile-nav a { display: block; padding: 12px 0; font-weight: 500; color: var(--text-light); border-bottom: 1px solid var(--border); }
+        .mobile-nav a:last-child { border-bottom: none; }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center; padding-top: 72px;
+            background: linear-gradient(135deg, var(--bg) 0%, var(--bg-alt) 50%, var(--primary-light) 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; right: -20%; width: 80%; height: 150%;
+            background: radial-gradient(ellipse, var(--primary-light) 0%, transparent 70%);
+            opacity: 0.6; animation: float 8s ease-in-out infinite;
+        }
+        @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-30px) rotate(2deg); } }
+        .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
+        .hero-content { animation: fadeInUp 1s ease-out; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px; background: var(--primary-light);
+            color: var(--primary-dark); padding: 8px 20px; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 600; margin-bottom: 24px;
+        }
+        .hero-title { font-family: var(--font-display); font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 24px; color: var(--text); }
+        .hero-title span { color: var(--primary-dark); }
+        .hero-desc { font-size: 1.15rem; color: var(--text-light); margin-bottom: 36px; max-width: 480px; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+        .hero-image { position: relative; animation: fadeInUp 1s ease-out 0.3s both; }
+        .hero-image img { width: 100%; max-width: 500px; margin: 0 auto; border-radius: var(--radius); box-shadow: 0 30px 60px var(--shadow-hover); }
+        .hero-float-card {
+            position: absolute; background: var(--surface); padding: 16px 20px; border-radius: var(--radius-sm);
+            box-shadow: 0 10px 30px var(--shadow-hover); display: flex; align-items: center; gap: 12px;
+            animation: floatCard 4s ease-in-out infinite;
+        }
+        .hero-float-card:nth-child(2) { top: 10%; right: 0; animation-delay: 0.5s; }
+        .hero-float-card:nth-child(3) { bottom: 15%; left: -20px; animation-delay: 1s; }
+        @keyframes floatCard { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .float-icon { width: 40px; height: 40px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .float-text { font-size: 0.85rem; }
+        .float-text strong { display: block; font-weight: 600; color: var(--text); }
+        .float-text span { color: var(--text-muted); font-size: 0.75rem; }
+
+        /* Features */
+        .features { padding: 80px 0; background: var(--bg-alt); }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+        .feature-card {
+            background: var(--surface); padding: 32px 24px; border-radius: var(--radius);
+            text-align: center; transition: var(--transition); border: 1px solid var(--border);
+        }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px var(--shadow-hover); }
+        .feature-icon { width: 64px; height: 64px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem; }
+        .feature-title { font-weight: 600; font-size: 1.1rem; margin-bottom: 8px; }
+        .feature-desc { font-size: 0.9rem; color: var(--text-light); }
+
+        /* Catalog */
+        .catalog { padding: 100px 0; background: var(--bg); }
+        .catalog-filters { display: flex; justify-content: center; gap: 12px; margin-bottom: 48px; flex-wrap: wrap; }
+        .filter-btn {
+            padding: 10px 24px; border-radius: 50px; font-weight: 500; font-size: 0.9rem;
+            background: var(--surface); color: var(--text-light); border: 1px solid var(--border);
+            cursor: pointer; transition: var(--transition);
+        }
+        .filter-btn:hover, .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 32px; }
+        .product-card {
+            background: var(--surface); border-radius: var(--radius); overflow: hidden;
+            border: 1px solid var(--border); transition: var(--transition); position: relative;
+        }
+        .product-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px var(--shadow-hover); }
+        .product-image { position: relative; overflow: hidden; aspect-ratio: 1; background: var(--bg-alt); }
+        .product-image img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .product-card:hover .product-image img { transform: scale(1.08); }
+        .product-badge {
+            position: absolute; top: 16px; left: 16px; background: var(--primary-dark); color: white;
+            padding: 4px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600;
+        }
+        .product-wishlist {
+            position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; background: var(--surface);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;
+            box-shadow: 0 4px 12px var(--shadow); transition: var(--transition); border: none;
+        }
+        .product-wishlist:hover, .product-wishlist.active { background: var(--error); color: white; }
+        .product-info { padding: 20px; }
+        .product-category { font-size: 0.8rem; color: var(--primary-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .product-name { font-weight: 600; font-size: 1.05rem; margin-bottom: 8px; color: var(--text); }
+        .product-desc { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; line-height: 1.5; }
+        .product-footer { display: flex; align-items: center; justify-content: space-between; }
+        .product-price { font-size: 1.3rem; font-weight: 700; color: var(--primary-dark); }
+        .product-price .original { font-size: 0.9rem; color: var(--text-muted); text-decoration: line-through; margin-left: 8px; font-weight: 400; }
+        .add-to-cart {
+            width: 44px; height: 44px; background: var(--primary); color: white; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; border: none;
+            transition: var(--transition);
+        }
+        .add-to-cart:hover { background: var(--primary-dark); transform: scale(1.1); }
+
+        /* Contact */
+        .contact { padding: 100px 0; background: linear-gradient(135deg, var(--bg-alt) 0%, var(--primary-light) 100%); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+        .contact-info h3 { font-family: var(--font-display); font-size: 2rem; margin-bottom: 16px; }
+        .contact-info p { color: var(--text-light); margin-bottom: 32px; }
+        .contact-methods { display: flex; flex-direction: column; gap: 20px; }
+        .contact-method {
+            display: flex; align-items: center; gap: 16px; padding: 20px; background: var(--surface);
+            border-radius: var(--radius-sm); border: 1px solid var(--border); transition: var(--transition);
+        }
+        .contact-method:hover { transform: translateX(8px); box-shadow: 0 8px 20px var(--shadow-hover); }
+        .contact-icon { width: 48px; height: 48px; background: var(--primary-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+        .contact-method-text strong { display: block; font-weight: 600; margin-bottom: 2px; }
+        .contact-method-text span { font-size: 0.9rem; color: var(--text-light); }
+        .contact-form { background: var(--surface); padding: 40px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 10px 30px var(--shadow); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-weight: 500; font-size: 0.9rem; margin-bottom: 8px; color: var(--text); }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 14px 16px; border: 2px solid var(--border); border-radius: var(--radius-sm);
+            background: var(--bg); color: var(--text); font-family: inherit; font-size: 0.95rem; transition: var(--transition);
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-light); }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        .form-submit {
+            width: 100%; padding: 16px; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; border: none; border-radius: 50px; font-weight: 600; font-size: 1rem;
+            cursor: pointer; transition: var(--transition);
+        }
+        .form-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--shadow-hover); }
+
+        /* Info Section */
+        .info-section { padding: 80px 0; background: var(--bg-alt); }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+        .info-card { background: var(--surface); padding: 40px; border-radius: var(--radius); border: 1px solid var(--border); }
+        .info-card h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+        .info-card h3 span { font-size: 1.8rem; }
+        .info-list { display: flex; flex-direction: column; gap: 16px; }
+        .info-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; background: var(--bg); border-radius: var(--radius-sm); transition: var(--transition); }
+        .info-item:hover { background: var(--primary-light); }
+        .info-item-icon { font-size: 1.4rem; }
+        .info-item-text { font-weight: 500; }
+
+        /* Footer */
+        .footer { background: var(--text); color: var(--bg); padding: 60px 0 24px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+        .footer-brand .logo { color: var(--primary); margin-bottom: 16px; }
+        .footer-brand p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+        .footer-title { font-weight: 600; font-size: 1rem; margin-bottom: 20px; color: var(--bg); }
+        .footer-links { display: flex; flex-direction: column; gap: 12px; }
+        .footer-links a { color: var(--text-muted); font-size: 0.9rem; transition: var(--transition); }
+        .footer-links a:hover { color: var(--primary); padding-left: 4px; }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        .footer-bottom p { color: var(--text-muted); font-size: 0.85rem; }
+        .social-links { display: flex; gap: 12px; }
+        .social-links a { width: 36px; height: 36px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--bg); transition: var(--transition); }
+        .social-links a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* Palette Modal */
+        .palette-modal {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5);
+            display: flex; align-items: center; justify-content: center; z-index: 2000;
+            opacity: 0; visibility: hidden; transition: var(--transition);
+        }
+        .palette-modal.active { opacity: 1; visibility: visible; }
+        .palette-modal-content { background: var(--surface); padding: 40px; border-radius: var(--radius); max-width: 480px; width: 90%; transform: scale(0.9); transition: var(--transition); }
+        .palette-modal.active .palette-modal-content { transform: scale(1); }
+        .palette-modal h3 { font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 8px; }
+        .palette-modal p { color: var(--text-light); margin-bottom: 24px; }
+        .palette-options { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+        .palette-option { padding: 20px; border-radius: var(--radius-sm); border: 2px solid var(--border); cursor: pointer; text-align: center; transition: var(--transition); }
+        .palette-option:hover { border-color: var(--primary); transform: translateY(-4px); }
+        .palette-option.active { border-color: var(--primary-dark); box-shadow: 0 0 0 3px var(--primary-light); }
+        .palette-preview { display: flex; gap: 6px; justify-content: center; margin-bottom: 12px; }
+        .palette-dot { width: 24px; height: 24px; border-radius: 50%; }
+        .palette-name { font-weight: 600; font-size: 0.9rem; }
+        .palette-close { position: absolute; top: 16px; right: 16px; width: 36px; height: 36px; background: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; color: var(--text); }
+
+        /* Cart Sidebar */
+        .cart-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 2000; opacity: 0; visibility: hidden; transition: var(--transition); }
+        .cart-overlay.active { opacity: 1; visibility: visible; }
+        .cart-sidebar { position: fixed; top: 0; right: 0; width: 420px; max-width: 100%; height: 100%; background: var(--surface); z-index: 2001; transform: translateX(100%); transition: var(--transition); display: flex; flex-direction: column; }
+        .cart-sidebar.active { transform: translateX(0); }
+        .cart-header { padding: 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+        .cart-header h3 { font-family: var(--font-display); font-size: 1.3rem; }
+        .cart-close { width: 36px; height: 36px; background: var(--bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; color: var(--text); }
+        .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+        .cart-item { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .cart-item-image { width: 80px; height: 80px; border-radius: var(--radius-sm); object-fit: cover; background: var(--bg-alt); }
+        .cart-item-info { flex: 1; }
+        .cart-item-name { font-weight: 600; margin-bottom: 4px; }
+        .cart-item-price { color: var(--primary-dark); font-weight: 700; }
+        .cart-item-remove { color: var(--text-muted); cursor: pointer; font-size: 0.85rem; margin-top: 4px; }
+        .cart-item-remove:hover { color: var(--error); }
+        .cart-empty { text-align: center; padding: 60px 24px; color: var(--text-muted); }
+        .cart-empty-icon { font-size: 3rem; margin-bottom: 16px; }
+        .cart-footer { padding: 24px; border-top: 1px solid var(--border); background: var(--bg-alt); }
+        .cart-total { display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 1.1rem; }
+        .cart-total span:last-child { font-weight: 700; color: var(--primary-dark); }
+        .cart-checkout { width: 100%; padding: 16px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 50px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: var(--transition); }
+        .cart-checkout:hover { transform: translateY(-2px); box-shadow: 0 8px 25px var(--shadow-hover); }
+
+        /* Toast */
+        .toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 3000; display: flex; flex-direction: column; gap: 12px; }
+        .toast { background: var(--surface); color: var(--text); padding: 16px 24px; border-radius: var(--radius-sm); box-shadow: 0 10px 30px var(--shadow-hover); display: flex; align-items: center; gap: 12px; transform: translateX(120%); animation: slideIn 0.4s ease forwards; border: 1px solid var(--border); max-width: 360px; }
+        .toast.removing { animation: slideOut 0.4s ease forwards; }
+        @keyframes slideIn { to { transform: translateX(0); } }
+        @keyframes slideOut { to { transform: translateX(120%); } }
+        .toast-icon { font-size: 1.3rem; }
+        .toast-success .toast-icon { color: var(--success); }
+        .toast-error .toast-icon { color: var(--error); }
+
+        /* Scroll Top */
+        .scroll-top { position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; background: var(--primary); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; box-shadow: 0 4px 15px var(--shadow-hover); opacity: 0; visibility: hidden; transform: translateY(20px); transition: var(--transition); z-index: 100; }
+        .scroll-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .scroll-top:hover { background: var(--primary-dark); transform: translateY(-4px); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero-content { order: 2; }
+            .hero-image { order: 1; }
+            .hero-desc { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-float-card { display: none; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-grid, .info-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .nav-desktop { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .mobile-nav { display: block; }
+            .features-grid { grid-template-columns: 1fr; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .cart-sidebar { width: 100%; }
+        }
+        @media (max-width: 480px) {
+            .products-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2.2rem; }
+            .palette-options { grid-template-columns: 1fr; }
+        }
+    </style>
+<base target="_blank">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="#" class="logo">VITA <span>PIEL</span></a>
+            <nav class="nav-desktop">
+                <a href="#inicio">Inicio</a>
+                <a href="#catalogo">Catálogo</a>
+                <a href="#contacto">Contacto</a>
+                <a href="#info">Información</a>
+            </nav>
+            <div class="header-controls">
+                <button class="control-btn" id="paletteBtn" title="Cambiar paleta de colores">🎨</button>
+                <button class="control-btn" id="themeBtn" title="Cambiar tema">🌙</button>
+                <button class="control-btn cart-btn" id="cartBtn" title="Ver carrito">
+                    🛒
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <div class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#inicio">Inicio</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#contacto">Contacto</a>
+        <a href="#info">Información</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">✨ Productos Premium</div>
+                <h1 class="hero-title">Tu piel merece lo <span>mejor</span></h1>
+                <p class="hero-desc">Descubre nuestra colección de productos de skincare de alta calidad. Fórmulas efectivas para una piel radiante y saludable.</p>
+                <div class="hero-buttons">
+                    <a href="#catalogo" class="btn btn-primary">Ver Catálogo 🛍️</a>
+                    <a href="https://wa.me/580000000000" target="_blank" class="btn btn-outline">Contactar por WhatsApp 💬</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=600&h=600&fit=crop" alt="Productos de skincare VITA PIEL">
+                <div class="hero-float-card">
+                    <div class="float-icon">🌿</div>
+                    <div class="float-text"><strong>100% Naturales</strong><span>Ingredientes orgánicos</span></div>
+                </div>
+                <div class="hero-float-card">
+                    <div class="float-icon">⭐</div>
+                    <div class="float-text"><strong>4.9/5 Rating</strong><span>Clientes satisfechos</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌿</div>
+                    <h3 class="feature-title">Ingredientes Naturales</h3>
+                    <p class="feature-desc">Fórmulas libres de químicos agresivos y cruelty-free</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚚</div>
+                    <h3 class="feature-title">Envíos Rápidos</h3>
+                    <p class="feature-desc">Delivery local y envíos a toda Venezuela</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3 class="feature-title">Pagos Seguros</h3>
+                    <p class="feature-desc">Zelle, Pago Móvil y Transferencias Bancarias</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎁</div>
+                    <h3 class="feature-title">Regalos Especiales</h3>
+                    <p class="feature-desc">Muestras y regalos en compras superiores a $50</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section class="catalog" id="catalogo">
+        <div class="container">
+            <h2 class="section-title">Nuestro Catálogo</h2>
+            <p class="section-subtitle">Productos seleccionados para el cuidado de tu piel</p>
+            <div class="catalog-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="serum">Serums</button>
+                <button class="filter-btn" data-filter="crema">Cremas</button>
+                <button class="filter-btn" data-filter="tonico">Tónicos</button>
+                <button class="filter-btn" data-filter="limpiador">Limpiadores</button>
+                <button class="filter-btn" data-filter="mascara">Máscaras</button>
+            </div>
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="contact" id="contacto">
+        <div class="container contact-grid">
+            <div class="contact-info">
+                <h3>¿Tienes preguntas?</h3>
+                <p>Estamos aquí para ayudarte. Contáctanos por cualquiera de nuestros canales y te responderemos lo antes posible.</p>
+                <div class="contact-methods">
+                    <a href="https://wa.me/580000000000" target="_blank" class="contact-method">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-method-text"><strong>WhatsApp</strong><span>Escríbenos directamente</span></div>
+                    </a>
+                    <a href="mailto:info@vitapiel.com" class="contact-method">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-method-text"><strong>Email</strong><span>info@vitapiel.com</span></div>
+                    </a>
+                    <div class="contact-method">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-method-text"><strong>Ubicación</strong><span>Caracas, Venezuela</span></div>
+                    </div>
+                </div>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <h3 style="font-family: var(--font-display); font-size: 1.5rem; margin-bottom: 24px;">Envíanos un mensaje</h3>
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Asunto</label>
+                    <select id="subject" name="subject" required>
+                        <option value="">Selecciona un asunto</option>
+                        <option value="consulta">Consulta general</option>
+                        <option value="pedido">Información de pedido</option>
+                        <option value="producto">Pregunta sobre producto</option>
+                        <option value="envio">Información de envío</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Enviar mensaje ✉️</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Payment & Shipping Info -->
+    <section class="info-section" id="info">
+        <div class="container">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><span>💳</span> Métodos de Pago</h3>
+                    <div class="info-list">
+                        <div class="info-item"><span class="info-item-icon">💵</span><span class="info-item-text">Zelle</span></div>
+                        <div class="info-item"><span class="info-item-icon">📱</span><span class="info-item-text">Pago Móvil (Venezuela)</span></div>
+                        <div class="info-item"><span class="info-item-icon">🏦</span><span class="info-item-text">Transferencia Bancaria</span></div>
+                        <div class="info-item"><span class="info-item-icon">💰</span><span class="info-item-text">Efectivo (solo entrega local)</span></div>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <h3><span>🚚</span> Opciones de Entrega</h3>
+                    <div class="info-list">
+                        <div class="info-item"><span class="info-item-icon">🏠</span><span class="info-item-text">Entrega Local (Caracas)</span></div>
+                        <div class="info-item"><span class="info-item-icon">🛵</span><span class="info-item-text">Delivery a Domicilio</span></div>
+                        <div class="info-item"><span class="info-item-icon">📦</span><span class="info-item-text">Envíos Nacionales</span></div>
+                        <div class="info-item"><span class="info-item-icon">🏪</span><span class="info-item-text">Retiro en Punto</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">VITA <span>PIEL</span></div>
+                    <p>Tu tienda de confianza para productos de skincare y belleza. Productos de alta calidad para el cuidado de tu piel.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Navegación</h4>
+                    <div class="footer-links">
+                        <a href="#inicio">Inicio</a>
+                        <a href="#catalogo">Catálogo</a>
+                        <a href="#contacto">Contacto</a>
+                        <a href="#info">Información</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Productos</h4>
+                    <div class="footer-links">
+                        <a href="#catalogo">Serums</a>
+                        <a href="#catalogo">Cremas</a>
+                        <a href="#catalogo">Tónicos</a>
+                        <a href="#catalogo">Limpiadores</a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="footer-title">Contacto</h4>
+                    <div class="footer-links">
+                        <a href="https://wa.me/580000000000" target="_blank">WhatsApp</a>
+                        <a href="mailto:info@vitapiel.com">info@vitapiel.com</a>
+                        <a href="#">Caracas, Venezuela</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 VITA PIEL. Todos los derechos reservados.</p>
+                <div class="social-links">
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="Facebook">📘</a>
+                    <a href="#" title="TikTok">🎵</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Palette Modal -->
+    <div class="palette-modal" id="paletteModal">
+        <div class="palette-modal-content" style="position: relative;">
+            <button class="palette-close" id="paletteClose">✕</button>
+            <h3>Personaliza tu experiencia</h3>
+            <p>Elige la paleta de colores que más te guste</p>
+            <div class="palette-options">
+                <div class="palette-option active" data-palette="rose">
+                    <div class="palette-preview">
+                        <div class="palette-dot" style="background: #f4a6b8;"></div>
+                        <div class="palette-dot" style="background: #fbdde5;"></div>
+                        <div class="palette-dot" style="background: #e07a95;"></div>
+                    </div>
+                    <div class="palette-name">Rosa Pastel</div>
+                </div>
+                <div class="palette-option" data-palette="lavender">
+                    <div class="palette-preview">
+                        <div class="palette-dot" style="background: #b8a9c9;"></div>
+                        <div class="palette-dot" style="background: #e4ddf0;"></div>
+                        <div class="palette-dot" style="background: #9b8ab0;"></div>
+                    </div>
+                    <div class="palette-name">Lavanda</div>
+                </div>
+                <div class="palette-option" data-palette="mint">
+                    <div class="palette-preview">
+                        <div class="palette-dot" style="background: #88d8b0;"></div>
+                        <div class="palette-dot" style="background: #c8f0db;"></div>
+                        <div class="palette-dot" style="background: #5cb88a;"></div>
+                    </div>
+                    <div class="palette-name">Menta</div>
+                </div>
+                <div class="palette-option" data-palette="peach">
+                    <div class="palette-preview">
+                        <div class="palette-dot" style="background: #f4b393;"></div>
+                        <div class="palette-dot" style="background: #fbe0d3;"></div>
+                        <div class="palette-dot" style="background: #e08f6a;"></div>
+                    </div>
+                    <div class="palette-name">Melocotón</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Tu Carrito 🛒</h3>
+            <button class="cart-close" id="cartClose">✕</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <div class="cart-empty-icon">🛒</div>
+                <p>Tu carrito está vacío</p>
+                <p style="font-size: 0.85rem; margin-top: 8px;">Agrega productos desde el catálogo</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-total"><span>Total:</span><span id="cartTotal">$0.00</span></div>
+            <button class="cart-checkout" id="cartCheckout">Finalizar compra por WhatsApp 📱</button>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop">↑</button>
+
+    <script>
+        // ============================================
+        // PRODUCT DATA
+        // ============================================
+        const products = [
+            {
+                id: 1, name: "Serum de Vitamina C", category: "serum",
+                description: "Ilumina y unifica el tono de la piel con 15% de vitamina C pura.",
+                price: 28.00, originalPrice: 35.00,
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop",
+                badge: "Bestseller"
+            },
+            {
+                id: 2, name: "Crema Hidratante Hyaluronic", category: "crema",
+                description: "Hidratación profunda con ácido hialurónico de bajo peso molecular.",
+                price: 32.00, originalPrice: null,
+                image: "https://images.unsplash.com/photo-1570194065650-d99fb4b38b15?w=400&h=400&fit=crop",
+                badge: null
+            },
+            {
+                id: 3, name: "Tónico Facial de Rosas", category: "tonico",
+                description: "Refresca y equilibra el pH de tu piel con agua de rosas orgánica.",
+                price: 18.00, originalPrice: 22.00,
+                image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=400&h=400&fit=crop",
+                badge: "Nuevo"
+            },
+            {
+                id: 4, name: "Limpiador Gel de Té Verde", category: "limpiador",
+                description: "Limpieza suave que elimina impurezas sin resecar la piel.",
+                price: 22.00, originalPrice: null,
+                image: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop",
+                badge: null
+            },
+            {
+                id: 5, name: "Serum Retinol 0.5%", category: "serum",
+                description: "Reduce líneas de expresión y mejora la textura de la piel.",
+                price: 38.00, originalPrice: 45.00,
+                image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=400&h=400&fit=crop",
+                badge: "Oferta"
+            },
+            {
+                id: 6, name: "Máscara de Arcilla Rosa", category: "mascara",
+                description: "Purifica y suaviza la piel con arcilla rosa del Himalaya.",
+                price: 24.00, originalPrice: null,
+                image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop",
+                badge: null
+            },
+            {
+                id: 7, name: "Crema Contorno de Ojos", category: "crema",
+                description: "Reduce ojeras y bolsas con cafeína y péptidos.",
+                price: 26.00, originalPrice: 30.00,
+                image: "https://images.unsplash.com/photo-1617897903246-719242758050?w=400&h=400&fit=crop",
+                badge: null
+            },
+            {
+                id: 8, name: "Tónico Exfoliante AHA/BHA", category: "tonico",
+                description: "Exfoliación química suave para una piel más luminosa.",
+                price: 29.00, originalPrice: null,
+                image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?w=400&h=400&fit=crop",
+                badge: "Popular"
+            },
+            {
+                id: 9, name: "Serum Niacinamida 10%", category: "serum",
+                description: "Minimiza poros, controla sebo y unifica el tono.",
+                price: 25.00, originalPrice: null,
+                image: "https://images.unsplash.com/photo-1617897903246-719242758050?w=400&h=400&fit=crop",
+                badge: null
+            },
+            {
+                id: 10, name: "Limpiador Balm Desmaquillante", category: "limpiador",
+                description: "Elimina maquillaje e impurezas en un solo paso.",
+                price: 27.00, originalPrice: 32.00,
+                image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
+                badge: null
+            },
+            {
+                id: 11, name: "Crema SPF 50+", category: "crema",
+                description: "Protección solar de amplio espectro con acabado invisible.",
+                price: 30.00, originalPrice: null,
+                image: "https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=400&h=400&fit=crop",
+                badge: "Esencial"
+            },
+            {
+                id: 12, name: "Máscara de Hidrogel", category: "mascara",
+                description: "Hidratación intensiva con colágeno y ácido hialurónico.",
+                price: 8.00, originalPrice: 10.00,
+                image: "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&h=400&fit=crop",
+                badge: null
+            }
+        ];
+
+        // ============================================
+        // STATE
+        // ============================================
+        let cart = JSON.parse(localStorage.getItem('vitapiel_cart')) || [];
+        let currentFilter = 'all';
+        let currentPalette = localStorage.getItem('vitapiel_palette') || 'rose';
+        let currentTheme = localStorage.getItem('vitapiel_theme') || 'light';
+
+        // ============================================
+        // DOM ELEMENTS
+        // ============================================
+        const productsGrid = document.getElementById('productsGrid');
+        const cartCount = document.getElementById('cartCount');
+        const cartItems = document.getElementById('cartItems');
+        const cartFooter = document.getElementById('cartFooter');
+        const cartTotal = document.getElementById('cartTotal');
+        const cartSidebar = document.getElementById('cartSidebar');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartBtn = document.getElementById('cartBtn');
+        const cartClose = document.getElementById('cartClose');
+        const cartCheckout = document.getElementById('cartCheckout');
+        const paletteModal = document.getElementById('paletteModal');
+        const paletteBtn = document.getElementById('paletteBtn');
+        const paletteClose = document.getElementById('paletteClose');
+        const themeBtn = document.getElementById('themeBtn');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        const header = document.getElementById('header');
+        const scrollTop = document.getElementById('scrollTop');
+        const toastContainer = document.getElementById('toastContainer');
+        const contactForm = document.getElementById('contactForm');
+
+        // ============================================
+        // INITIALIZATION
+        // ============================================
+        function init() {
+            document.body.setAttribute('data-palette', currentPalette);
+            document.body.setAttribute('data-theme', currentTheme);
+            updateThemeIcon();
+            renderProducts();
+            updateCart();
+            setupEventListeners();
+        }
+
+        // ============================================
+        // RENDER PRODUCTS
+        // ============================================
+        function renderProducts() {
+            const filtered = currentFilter === 'all' 
+                ? products 
+                : products.filter(p => p.category === currentFilter);
+
+            productsGrid.innerHTML = filtered.map(product => `
+                <div class="product-card" data-category="${product.category}">
+                    <div class="product-image">
+                        <img src="${product.image}" alt="${product.name}" loading="lazy">
+                        ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
+                        <button class="product-wishlist" onclick="toggleWishlist(${product.id}, this)">♡</button>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">${product.category}</div>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-desc">${product.description}</p>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                $${product.price.toFixed(2)}
+                                ${product.originalPrice ? `<span class="original">$${product.originalPrice.toFixed(2)}</span>` : ''}
+                            </div>
+                            <button class="add-to-cart" onclick="addToCart(${product.id})" title="Agregar al carrito">+</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ============================================
+        // CART FUNCTIONS
+        // ============================================
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            saveCart();
+            updateCart();
+            showToast(`${product.name} agregado al carrito`, 'success');
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            saveCart();
+            updateCart();
+        }
+
+        function saveCart() {
+            localStorage.setItem('vitapiel_cart', JSON.stringify(cart));
+        }
+
+        function updateCart() {
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            cartCount.textContent = totalItems;
+            cartTotal.textContent = `$${totalPrice.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="cart-empty">
+                        <div class="cart-empty-icon">🛒</div>
+                        <p>Tu carrito está vacío</p>
+                        <p style="font-size: 0.85rem; margin-top: 8px;">Agrega productos desde el catálogo</p>
+                    </div>
+                `;
+                cartFooter.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">$${item.price.toFixed(2)} x ${item.quantity}</div>
+                            <div class="cart-item-remove" onclick="removeFromCart(${item.id})">Eliminar</div>
+                        </div>
+                    </div>
+                `).join('');
+                cartFooter.style.display = 'block';
+            }
+        }
+
+        function toggleCart() {
+            cartSidebar.classList.toggle('active');
+            cartOverlay.classList.toggle('active');
+            document.body.style.overflow = cartSidebar.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast('Tu carrito está vacío', 'error');
+                return;
+            }
+
+            let message = 'Hola VITA PIEL! Quiero realizar el siguiente pedido:%0A%0A';
+            let total = 0;
+
+            cart.forEach(item => {
+                message += `- ${item.name} (x${item.quantity}): $${(item.price * item.quantity).toFixed(2)}%0A`;
+                total += item.price * item.quantity;
+            });
+
+            message += `%0ATotal: $${total.toFixed(2)}%0A%0A`;
+            message += 'Por favor indicame los métodos de pago disponibles y opciones de envío. Gracias!';
+
+            window.open(`https://wa.me/580000000000?text=${message}`, '_blank');
+        }
+
+        // ============================================
+        // WISHLIST
+        // ============================================
+        function toggleWishlist(productId, btn) {
+            btn.classList.toggle('active');
+            btn.textContent = btn.classList.contains('active') ? '♥' : '♡';
+            showToast(btn.classList.contains('active') ? 'Agregado a favoritos' : 'Eliminado de favoritos', 'success');
+        }
+
+        // ============================================
+        // THEME & PALETTE
+        // ============================================
+        function toggleTheme() {
+            currentTheme = currentTheme === 'light' ? 'dark' : 'light';
+            document.body.setAttribute('data-theme', currentTheme);
+            localStorage.setItem('vitapiel_theme', currentTheme);
+            updateThemeIcon();
+        }
+
+        function updateThemeIcon() {
+            themeBtn.textContent = currentTheme === 'light' ? '🌙' : '☀️';
+            themeBtn.title = currentTheme === 'light' ? 'Cambiar a modo oscuro' : 'Cambiar a modo claro';
+        }
+
+        function openPaletteModal() {
+            paletteModal.classList.add('active');
+        }
+
+        function closePaletteModal() {
+            paletteModal.classList.remove('active');
+        }
+
+        function selectPalette(palette) {
+            currentPalette = palette;
+            document.body.setAttribute('data-palette', palette);
+            localStorage.setItem('vitapiel_palette', palette);
+
+            document.querySelectorAll('.palette-option').forEach(opt => {
+                opt.classList.toggle('active', opt.dataset.palette === palette);
+            });
+
+            showToast(`Paleta ${getPaletteName(palette)} aplicada`, 'success');
+        }
+
+        function getPaletteName(palette) {
+            const names = { rose: 'Rosa Pastel', lavender: 'Lavanda', mint: 'Menta', peach: 'Melocotón' };
+            return names[palette] || palette;
+        }
+
+        // ============================================
+        // FILTER
+        // ============================================
+        function filterProducts(category) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.filter === category);
+            });
+            renderProducts();
+        }
+
+        // ============================================
+        // MOBILE MENU
+        // ============================================
+        function toggleMobileMenu() {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        }
+
+        // ============================================
+        // SCROLL
+        // ============================================
+        function handleScroll() {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 500) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ============================================
+        // TOAST
+        // ============================================
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `
+                <span class="toast-icon">${type === 'success' ? '✅' : '❌'}</span>
+                <span>${message}</span>
+            `;
+            toastContainer.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('removing');
+                setTimeout(() => toast.remove(), 400);
+            }, 3000);
+        }
+
+        // ============================================
+        // CONTACT FORM
+        // ============================================
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const subject = formData.get('subject');
+            const message = formData.get('message');
+
+            const mailtoLink = `mailto:info@vitapiel.com?subject=${encodeURIComponent(subject + ' - ' + name)}&body=${encodeURIComponent('Nombre: ' + name + '\nEmail: ' + email + '\n\n' + message)}`;
+            window.location.href = mailtoLink;
+
+            showToast('Mensaje preparado para enviar', 'success');
+            contactForm.reset();
+        }
+
+        // ============================================
+        // EVENT LISTENERS
+        // ============================================
+        function setupEventListeners() {
+            // Cart
+            cartBtn.addEventListener('click', toggleCart);
+            cartClose.addEventListener('click', toggleCart);
+            cartOverlay.addEventListener('click', toggleCart);
+            cartCheckout.addEventListener('click', checkoutWhatsApp);
+
+            // Theme & Palette
+            themeBtn.addEventListener('click', toggleTheme);
+            paletteBtn.addEventListener('click', openPaletteModal);
+            paletteClose.addEventListener('click', closePaletteModal);
+            paletteModal.addEventListener('click', (e) => {
+                if (e.target === paletteModal) closePaletteModal();
+            });
+
+            document.querySelectorAll('.palette-option').forEach(opt => {
+                opt.addEventListener('click', () => selectPalette(opt.dataset.palette));
+            });
+
+            // Filters
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => filterProducts(btn.dataset.filter));
+            });
+
+            // Mobile menu
+            mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            document.querySelectorAll('.mobile-nav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                });
+            });
+
+            // Scroll
+            window.addEventListener('scroll', handleScroll);
+            scrollTop.addEventListener('click', scrollToTop);
+
+            // Contact form
+            contactForm.addEventListener('submit', handleContactSubmit);
+
+            // Close mobile nav on resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    mobileMenuBtn.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                }
+            });
+        }
+
+        // ============================================
+        // START
+        // ============================================
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
